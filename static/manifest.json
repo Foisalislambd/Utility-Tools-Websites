@@ -1,0 +1,25 @@
+{
+    "name": "Ultimate Utility Tools",
+    "short_name": "UltimateTools",
+    "description": "50+ free online utility tools for developers and everyday users",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3b82f6",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/static/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["utilities", "productivity", "developer"],
+    "lang": "en",
+    "dir": "ltr"
+}

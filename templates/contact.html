@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Ultimate Utility Tools{% endblock %}
+{% block description %}Get in touch with the Ultimate Utility Tools team. Report issues, suggest new tools, or ask questions about our free online utilities.{% endblock %}
+
+{% block content %}
+<div class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+            <p class="text-xl text-gray-600">We'd love to hear from you</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div class="bg-gray-50 rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <input type="text" required class="form-input" placeholder="Your name">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" required class="form-input" placeholder="your@email.com">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                        <select class="form-select">
+                            <option>General Question</option>
+                            <option>Bug Report</option>
+                            <option>Feature Request</option>
+                            <option>Tool Suggestion</option>
+                            <option>Partnership Inquiry</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea rows="6" required class="form-textarea" placeholder="Tell us how we can help you..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full btn-primary">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+                    <p class="text-gray-600 mb-8">
+                        Have a question, suggestion, or found a bug? We're here to help! 
+                        Our team is committed to making Ultimate Utility Tools the best 
+                        collection of free online tools.
+                    </p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Email Support</h3>
+                            <p class="text-gray-600">support@ultimatetools.com</p>
+                            <p class="text-sm text-gray-500">We typically respond within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Bug Reports</h3>
+                            <p class="text-gray-600">Found a bug? Let us know!</p>
+                            <p class="text-sm text-gray-500">Include steps to reproduce the issue</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Feature Requests</h3>
+                            <p class="text-gray-600">Suggest new tools or improvements</p>
+                            <p class="text-sm text-gray-500">We love hearing your ideas!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-6">
+                    <h3 class="font-semibold text-blue-900 mb-2">Open Source</h3>
+                    <p class="text-blue-800 text-sm">
+                        Ultimate Utility Tools is open source! Contribute to the project, 
+                        report issues, or suggest improvements on our GitHub repository.
+                    </p>
+                    <a href="#" class="inline-flex items-center mt-3 text-blue-600 hover:text-blue-700 font-medium">
+                        View on GitHub
+                        <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    ToolsApp.showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
+    this.reset();
+});
+</script>
+{% endblock %}

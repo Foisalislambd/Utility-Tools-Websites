@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Advanced Tool Interface -->
+<div class="py-12 bg-gray-50 min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Tool Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ tool_name.replace('_', ' ').title() }}</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">{{ tool_description }}</p>
+        </div>
+        
+        <!-- Tool Interface -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Input Section -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">Input</h2>
+                <div id="tool-input">
+                    <!-- Dynamic input interface -->
+                </div>
+            </div>
+            
+            <!-- Output Section -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">Output</h2>
+                <div id="tool-output" class="min-h-[200px] flex items-center justify-center text-gray-400">
+                    <div class="text-center">
+                        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                        <p>Results will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tool Information -->
+        <div class="mt-12 bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">About This Tool</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Features</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            100% free to use
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            No registration required
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Privacy-focused processing
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Instant results
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Use Cases</h3>
+                    <div class="text-gray-600 space-y-2" id="use-cases">
+                        <!-- Dynamic use cases based on tool -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Related Tools -->
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Related Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="related-tools">
+                <!-- Dynamic related tools -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Advanced tool functionality
+class AdvancedToolInterface {
+    constructor(toolName) {
+        this.toolName = toolName;
+        this.init();
+    }
+
+    init() {
+        this.loadToolInterface();
+        this.loadRelatedTools();
+        this.loadUseCases();
+    }
+
+    loadToolInterface() {
+        const inputDiv = document.getElementById('tool-input');
+        
+        // Tool-specific interfaces
+        const interfaces = {
+            image_resizer: this.createImageResizerInterface(),
+            image_compressor: this.createImageCompressorInterface(),
+            meta_tag_analyzer: this.createMetaAnalyzerInterface(),
+            ssl_checker: this.createSSLCheckerInterface(),
+            file_hash: this.createFileHashInterface(),
+            // Add more advanced interfaces as needed
+        };
+        
+        inputDiv.innerHTML = interfaces[this.toolName] || this.createGenericInterface();
+    }
+
+    createImageResizerInterface() {
+        return `
+            <form id="toolForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Image</label>
+                    <div class="file-upload-area" onclick="document.getElementById('imageFile').click()">
+                        <input type="file" id="imageFile" name="file" accept="image/*" class="hidden" onchange="this.form.querySelector('.file-name').textContent = this.files[0]?.name || 'Choose file'">
+                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                        <p class="file-name text-gray-600">Choose an image file</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Width (px)</label>
+                        <input type="number" name="width" class="form-input" placeholder="800">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Height (px)</label>
+                        <input type="number" name="height" class="form-input" placeholder="600">
+                    </div>
+                </div>
+                
+                <button type="button" onclick="this.processImage()" class="w-full btn-primary">
+                    Resize Image
+                </button>
+            </form>
+        `;
+    }
+
+    createImageCompressorInterface() {
+        return `
+            <form id="toolForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Image</label>
+                    <div class="file-upload-area" onclick="document.getElementById('imageFile').click()">
+                        <input type="file" id="imageFile" name="file" accept="image/*" class="hidden" onchange="this.form.querySelector('.file-name').textContent = this.files[0]?.name || 'Choose file'">
+                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                        <p class="file-name text-gray-600">Choose an image file</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Quality (%)</label>
+                    <input type="range" name="quality" min="10" max="100" value="80" class="w-full" oninput="this.nextElementSibling.textContent = this.value + '%'">
+                    <div class="text-center text-sm text-gray-600 mt-1">80%</div>
+                </div>
+                
+                <button type="button" onclick="this.processImage()" class="w-full btn-primary">
+                    Compress Image
+                </button>
+            </form>
+        `;
+    }
+
+    createMetaAnalyzerInterface() {
+        return `
+            <form id="toolForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Website URL</label>
+                    <input type="url" name="url" class="form-input" placeholder="https://example.com" required>
+                </div>
+                
+                <button type="submit" class="w-full btn-primary">
+                    Analyze Website
+                </button>
+            </form>
+        `;
+    }
+
+    createSSLCheckerInterface() {
+        return `
+            <form id="toolForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Domain Name</label>
+                    <input type="text" name="domain" class="form-input" placeholder="example.com" required>
+                </div>
+                
+                <button type="submit" class="w-full btn-primary">
+                    Check SSL Certificate
+                </button>
+            </form>
+        `;
+    }
+
+    createFileHashInterface() {
+        return `
+            <form id="toolForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload File</label>
+                    <div class="file-upload-area" onclick="document.getElementById('file').click()">
+                        <input type="file" id="file" name="file" class="hidden" onchange="this.form.querySelector('.file-name').textContent = this.files[0]?.name || 'Choose file'">
+                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <p class="file-name text-gray-600">Choose a file</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Hash Algorithm</label>
+                    <select name="algorithm" class="form-select">
+                        <option value="md5">MD5</option>
+                        <option value="sha1">SHA-1</option>
+                        <option value="sha256">SHA-256</option>
+                        <option value="sha512">SHA-512</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="w-full btn-primary">
+                    Calculate Hash
+                </button>
+            </form>
+        `;
+    }
+
+    createGenericInterface() {
+        return `
+            <div class="text-center py-12">
+                <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                </svg>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Tool Interface</h3>
+                <p class="text-gray-600">This tool interface is being developed.</p>
+            </div>
+        `;
+    }
+
+    loadRelatedTools() {
+        // Implementation for loading related tools
+        const relatedDiv = document.getElementById('related-tools');
+        // This would be populated based on the current tool category
+    }
+
+    loadUseCases() {
+        const useCasesDiv = document.getElementById('use-cases');
+        
+        const useCases = {
+            image_resizer: [
+                'Optimize images for web use',
+                'Create thumbnails',
+                'Resize for social media',
+                'Prepare images for mobile apps'
+            ],
+            password_generator: [
+                'Create secure account passwords',
+                'Generate API keys',
+                'Create temporary passwords',
+                'Bulk password generation'
+            ],
+            // Add more use cases
+        };
+        
+        const cases = useCases[this.toolName] || ['General utility tasks', 'Data processing', 'Development workflows'];
+        
+        useCasesDiv.innerHTML = cases.map(useCase => `
+            <div class="flex items-center">
+                <svg class="w-4 h-4 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                ${useCase}
+            </div>
+        `).join('');
+    }
+
+    async processImage() {
+        const form = document.getElementById('toolForm');
+        const fileInput = form.querySelector('input[type="file"]');
+        const file = fileInput.files[0];
+        
+        if (!file) {
+            ToolsApp.showNotification('Please select a file', 'warning');
+            return;
+        }
+        
+        const formData = new FormData(form);
+        const outputDiv = document.getElementById('tool-output');
+        
+        // Show loading
+        outputDiv.innerHTML = `
+            <div class="text-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                <p class="text-gray-600">Processing image...</p>
+            </div>
+        `;
+        
+        try {
+            const endpoint = this.toolName === 'image_resizer' ? '/api/image/resize' : '/api/image/compress';
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success !== false) {
+                this.displayImageResult(result);
+            } else {
+                this.displayError(result.result);
+            }
+        } catch (error) {
+            this.displayError(error.message);
+        }
+    }
+
+    displayImageResult(result) {
+        const outputDiv = document.getElementById('tool-output');
+        
+        outputDiv.innerHTML = `
+            <div class="space-y-6">
+                <div class="text-center">
+                    <img src="${result.image}" alt="Processed Image" class="max-w-full h-auto border border-gray-300 rounded-lg">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    ${result.original_size ? `
+                        <div class="bg-gray-50 p-3 rounded">
+                            <div class="font-medium text-gray-900">Original Size</div>
+                            <div class="text-gray-600">${result.original_size.width} × ${result.original_size.height}</div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <div class="font-medium text-gray-900">New Size</div>
+                            <div class="text-gray-600">${result.new_size.width} × ${result.new_size.height}</div>
+                        </div>
+                    ` : ''}
+                    
+                    ${result.compression_ratio ? `
+                        <div class="bg-gray-50 p-3 rounded">
+                            <div class="font-medium text-gray-900">Compression</div>
+                            <div class="text-gray-600">${result.compression_ratio}</div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <div class="font-medium text-gray-900">Quality</div>
+                            <div class="text-gray-600">${result.quality}%</div>
+                        </div>
+                    ` : ''}
+                </div>
+                
+                <button onclick="this.downloadImage('${result.image}')" class="w-full btn-success">
+                    Download Processed Image
+                </button>
+            </div>
+        `;
+    }
+
+    displayError(error) {
+        const outputDiv = document.getElementById('tool-output');
+        outputDiv.innerHTML = `
+            <div class="text-center text-red-600">
+                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <p class="font-medium">Error</p>
+                <p class="text-sm mt-1">${error}</p>
+            </div>
+        `;
+    }
+
+    downloadImage(dataUrl) {
+        const link = document.createElement('a');
+        link.download = `processed-image-${Date.now()}.png`;
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        ToolsApp.showNotification('Image downloaded!', 'success');
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const toolName = '{{ tool_name }}';
+    new AdvancedToolInterface(toolName);
+});
+</script>
+{% endblock %}
