@@ -15,7 +15,9 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 # Import utility modules
 from backend.utils import (
     text_utils, converter_utils, generator_utils, 
-    crypto_utils, image_utils, web_utils, file_utils
+    crypto_utils, image_utils, web_utils, file_utils,
+    advanced_text_utils, advanced_converter_utils, advanced_generator_utils,
+    developer_utils, math_utils, network_utils
 )
 
 app = FastAPI(
@@ -49,7 +51,14 @@ TOOL_CATEGORIES = {
         "tools": [
             "word_count", "character_count", "text_case_converter", 
             "text_diff", "text_formatter", "remove_duplicates",
-            "sort_lines", "reverse_text", "text_encoder_decoder"
+            "sort_lines", "reverse_text", "text_encoder_decoder",
+            "text_statistics", "find_replace", "text_splitter",
+            "text_merger", "line_counter", "paragraph_counter",
+            "sentence_counter", "reading_time", "text_summarizer",
+            "keyword_density", "text_cleaner", "whitespace_remover",
+            "html_stripper", "text_extractor", "regex_tester",
+            "text_validator", "spell_checker", "grammar_checker",
+            "text_translator", "language_detector", "text_sentiment"
         ]
     },
     "converters": {
@@ -58,7 +67,16 @@ TOOL_CATEGORIES = {
         "tools": [
             "base64_converter", "url_encoder", "json_formatter",
             "csv_to_json", "xml_to_json", "markdown_to_html",
-            "unit_converter", "color_converter", "timestamp_converter"
+            "unit_converter", "color_converter", "timestamp_converter",
+            "html_to_text", "text_to_html", "yaml_converter",
+            "sql_formatter", "css_formatter", "js_formatter",
+            "number_base_converter", "roman_numeral_converter", "currency_converter",
+            "temperature_converter", "length_converter", "weight_converter",
+            "area_converter", "volume_converter", "speed_converter",
+            "pressure_converter", "energy_converter", "frequency_converter",
+            "angle_converter", "data_size_converter", "time_zone_converter",
+            "coordinate_converter", "ascii_converter", "unicode_converter",
+            "emoji_converter", "morse_code_converter", "binary_converter"
         ]
     },
     "generators": {
@@ -67,7 +85,17 @@ TOOL_CATEGORIES = {
         "tools": [
             "password_generator", "uuid_generator", "qr_generator",
             "lorem_ipsum", "fake_data", "hash_generator",
-            "random_number", "color_palette", "barcode_generator"
+            "random_number", "color_palette", "barcode_generator",
+            "credit_card_generator", "name_generator", "email_generator",
+            "username_generator", "api_key_generator", "token_generator",
+            "slug_generator", "guid_generator", "random_string",
+            "random_date", "random_ip", "random_mac",
+            "random_user_agent", "random_address", "random_phone",
+            "random_company", "random_domain", "random_url",
+            "random_quote", "random_joke", "random_fact",
+            "placeholder_image", "gradient_generator", "pattern_generator",
+            "noise_generator", "avatar_generator", "icon_generator",
+            "css_generator", "html_generator", "sql_generator"
         ]
     },
     "crypto": {
@@ -75,7 +103,15 @@ TOOL_CATEGORIES = {
         "description": "Encryption, decryption, and hashing tools",
         "tools": [
             "md5_hash", "sha_hash", "encrypt_decrypt",
-            "jwt_decoder", "certificate_info", "rsa_generator"
+            "jwt_decoder", "certificate_info", "rsa_generator",
+            "aes_encrypt", "des_encrypt", "blowfish_encrypt",
+            "bcrypt_hash", "scrypt_hash", "pbkdf2_hash",
+            "hmac_generator", "digital_signature", "key_generator",
+            "entropy_calculator", "password_strength", "hash_cracker",
+            "ssl_decoder", "pgp_tools", "base32_converter",
+            "hex_converter", "crc_calculator", "checksum_validator",
+            "random_bytes", "secure_compare", "otp_generator",
+            "totp_generator", "hotp_generator", "secret_sharing"
         ]
     },
     "image": {
@@ -83,7 +119,17 @@ TOOL_CATEGORIES = {
         "description": "Image processing and manipulation tools",
         "tools": [
             "image_resizer", "image_compressor", "format_converter",
-            "image_metadata", "color_picker", "image_cropper"
+            "image_metadata", "color_picker", "image_cropper",
+            "image_rotator", "image_flipper", "brightness_adjuster",
+            "contrast_adjuster", "saturation_adjuster", "hue_adjuster",
+            "blur_filter", "sharpen_filter", "noise_filter",
+            "edge_detector", "histogram_analyzer", "color_analyzer",
+            "dominant_colors", "image_splitter", "image_merger",
+            "watermark_adder", "border_adder", "corner_rounder",
+            "shadow_adder", "reflection_adder", "vintage_filter",
+            "sepia_filter", "grayscale_filter", "invert_colors",
+            "pixelate_filter", "oil_painting_filter", "sketch_filter",
+            "cartoon_filter", "emboss_filter", "solarize_filter"
         ]
     },
     "web": {
@@ -92,7 +138,17 @@ TOOL_CATEGORIES = {
         "tools": [
             "url_shortener", "meta_tag_analyzer", "robots_txt_generator",
             "sitemap_generator", "website_screenshot", "ssl_checker",
-            "dns_lookup", "whois_lookup", "page_speed_test"
+            "dns_lookup", "whois_lookup", "page_speed_test",
+            "seo_analyzer", "broken_link_checker", "redirect_checker",
+            "http_headers", "response_time", "ping_test",
+            "traceroute", "port_scanner", "ip_lookup",
+            "user_agent_parser", "referrer_parser", "cookie_parser",
+            "html_validator", "css_validator", "js_validator",
+            "accessibility_checker", "mobile_friendly_test", "schema_validator",
+            "open_graph_tester", "twitter_card_tester", "favicon_generator",
+            "htaccess_generator", "csp_generator", "cors_tester",
+            "webhook_tester", "api_tester", "json_path_tester",
+            "xpath_tester", "css_selector_tester", "regex_url_tester"
         ]
     },
     "file": {
@@ -100,7 +156,82 @@ TOOL_CATEGORIES = {
         "description": "File processing and analysis tools",
         "tools": [
             "file_hash", "file_info", "zip_extractor",
-            "pdf_tools", "file_converter", "duplicate_finder"
+            "pdf_tools", "file_converter", "duplicate_finder",
+            "file_splitter", "file_merger", "file_compressor",
+            "file_encryptor", "file_shredder", "file_renamer",
+            "batch_renamer", "file_organizer", "directory_tree",
+            "disk_usage", "file_permissions", "file_timestamps",
+            "mime_detector", "encoding_detector", "line_endings",
+            "bom_detector", "virus_scanner", "malware_detector",
+            "file_recovery", "deleted_files", "temp_cleaner",
+            "cache_cleaner", "log_analyzer", "config_parser"
+        ]
+    },
+    "developer": {
+        "name": "Developer Tools",
+        "description": "Programming and development utilities",
+        "tools": [
+            "code_formatter", "code_minifier", "syntax_highlighter",
+            "regex_builder", "regex_tester", "xpath_builder",
+            "sql_builder", "query_optimizer", "api_client",
+            "json_path", "xml_path", "css_selector",
+            "html_parser", "xml_parser", "csv_parser",
+            "log_parser", "config_generator", "env_generator",
+            "gitignore_generator", "license_generator", "readme_generator",
+            "changelog_generator", "documentation_generator", "comment_generator",
+            "variable_namer", "function_namer", "class_namer",
+            "package_namer", "project_namer", "commit_message",
+            "code_reviewer", "complexity_analyzer", "dependency_checker",
+            "vulnerability_scanner", "code_duplicator", "refactoring_helper"
+        ]
+    },
+    "data": {
+        "name": "Data Tools",
+        "description": "Data processing and analysis utilities",
+        "tools": [
+            "data_validator", "data_cleaner", "data_transformer",
+            "csv_analyzer", "json_analyzer", "xml_analyzer",
+            "data_merger", "data_splitter", "data_sampler",
+            "duplicate_remover", "null_handler", "outlier_detector",
+            "statistical_analyzer", "correlation_calculator", "trend_analyzer",
+            "pivot_table", "cross_tab", "group_by",
+            "sort_data", "filter_data", "search_data",
+            "data_profiler", "schema_generator", "data_dictionary",
+            "data_lineage", "data_quality", "data_governance",
+            "etl_generator", "sql_generator", "migration_helper"
+        ]
+    },
+    "math": {
+        "name": "Math Tools",
+        "description": "Mathematical calculators and utilities",
+        "tools": [
+            "basic_calculator", "scientific_calculator", "programmer_calculator",
+            "matrix_calculator", "equation_solver", "derivative_calculator",
+            "integral_calculator", "limit_calculator", "series_calculator",
+            "statistics_calculator", "probability_calculator", "combinatorics_calculator",
+            "number_theory", "prime_checker", "factorization",
+            "gcd_calculator", "lcm_calculator", "modular_arithmetic",
+            "base_converter", "fraction_calculator", "percentage_calculator",
+            "interest_calculator", "loan_calculator", "mortgage_calculator",
+            "investment_calculator", "retirement_calculator", "tax_calculator",
+            "tip_calculator", "discount_calculator", "markup_calculator",
+            "ratio_calculator", "proportion_calculator", "unit_circle"
+        ]
+    },
+    "network": {
+        "name": "Network Tools",
+        "description": "Network analysis and testing utilities",
+        "tools": [
+            "ip_calculator", "subnet_calculator", "cidr_calculator",
+            "mac_lookup", "port_checker", "bandwidth_tester",
+            "latency_tester", "jitter_tester", "packet_loss_tester",
+            "network_scanner", "vulnerability_scanner", "security_checker",
+            "firewall_tester", "proxy_checker", "vpn_tester",
+            "dns_propagation", "mx_lookup", "txt_lookup",
+            "cname_lookup", "aaaa_lookup", "ptr_lookup",
+            "reverse_dns", "dns_cache", "dns_benchmark",
+            "email_validator", "domain_checker", "ssl_analyzer",
+            "certificate_chain", "cipher_checker", "tls_tester"
         ]
     }
 }
@@ -259,6 +390,229 @@ async def file_hash(file: UploadFile = File(...), algorithm: str = Form("md5")):
 async def file_info(file: UploadFile = File(...)):
     return await file_utils.get_file_info(file)
 
+# Advanced Text Tools API Routes
+@app.post("/api/text/statistics")
+async def text_statistics(text: str = Form(...)):
+    return advanced_text_utils.text_statistics(text)
+
+@app.post("/api/text/find-replace")
+async def find_replace(text: str = Form(...), find: str = Form(...), replace: str = Form(...), 
+                      case_sensitive: bool = Form(True), whole_word: bool = Form(False)):
+    return advanced_text_utils.find_replace(text, find, replace, case_sensitive, whole_word)
+
+@app.post("/api/text/splitter")
+async def text_splitter(text: str = Form(...), delimiter: str = Form("\n"), max_length: int = Form(None)):
+    return advanced_text_utils.text_splitter(text, delimiter, max_length)
+
+@app.post("/api/text/keyword-density")
+async def keyword_density(text: str = Form(...), keywords: str = Form(None)):
+    keyword_list = keywords.split(',') if keywords else None
+    return advanced_text_utils.keyword_density(text, keyword_list)
+
+@app.post("/api/text/cleaner")
+async def text_cleaner(text: str = Form(...), remove_extra_spaces: bool = Form(True),
+                      remove_line_breaks: bool = Form(False), remove_punctuation: bool = Form(False)):
+    options = {
+        "remove_extra_spaces": remove_extra_spaces,
+        "remove_line_breaks": remove_line_breaks,
+        "remove_punctuation": remove_punctuation
+    }
+    return advanced_text_utils.text_cleaner(text, options)
+
+@app.post("/api/text/html-stripper")
+async def html_stripper(text: str = Form(...)):
+    return advanced_text_utils.html_stripper(text)
+
+@app.post("/api/text/regex-tester")
+async def regex_tester(text: str = Form(...), pattern: str = Form(...), flags: str = Form("")):
+    return advanced_text_utils.regex_tester(text, pattern, flags)
+
+@app.post("/api/text/language-detector")
+async def language_detector(text: str = Form(...)):
+    return advanced_text_utils.language_detector(text)
+
+@app.post("/api/text/sentiment")
+async def text_sentiment(text: str = Form(...)):
+    return advanced_text_utils.text_sentiment(text)
+
+# Advanced Converter Tools API Routes
+@app.post("/api/convert/html-to-text")
+async def html_to_text(html_content: str = Form(...)):
+    return advanced_converter_utils.html_to_text(html_content)
+
+@app.post("/api/convert/text-to-html")
+async def text_to_html(text: str = Form(...), preserve_line_breaks: bool = Form(True)):
+    options = {"preserve_line_breaks": preserve_line_breaks}
+    return advanced_converter_utils.text_to_html(text, options)
+
+@app.post("/api/convert/yaml")
+async def yaml_converter(text: str = Form(...), action: str = Form("to_json")):
+    return advanced_converter_utils.yaml_converter(text, action)
+
+@app.post("/api/convert/sql-formatter")
+async def sql_formatter(sql: str = Form(...)):
+    return advanced_converter_utils.sql_formatter(sql)
+
+@app.post("/api/convert/number-base")
+async def number_base_converter(number: str = Form(...), from_base: int = Form(10), to_base: int = Form(2)):
+    return advanced_converter_utils.number_base_converter(number, from_base, to_base)
+
+@app.post("/api/convert/roman-numeral")
+async def roman_numeral_converter(value: str = Form(...), action: str = Form("to_roman")):
+    return advanced_converter_utils.roman_numeral_converter(value, action)
+
+@app.post("/api/convert/ascii")
+async def ascii_converter(text: str = Form(...), action: str = Form("to_ascii")):
+    return advanced_converter_utils.ascii_converter(text, action)
+
+@app.post("/api/convert/morse-code")
+async def morse_code_converter(text: str = Form(...), action: str = Form("to_morse")):
+    return advanced_converter_utils.morse_code_converter(text, action)
+
+@app.post("/api/convert/binary")
+async def binary_converter(text: str = Form(...), action: str = Form("to_binary")):
+    return advanced_converter_utils.binary_converter(text, action)
+
+# Advanced Generator Tools API Routes
+@app.post("/api/generate/credit-card")
+async def credit_card_generator(card_type: str = Form("visa")):
+    return advanced_generator_utils.credit_card_generator(card_type)
+
+@app.post("/api/generate/name")
+async def name_generator(gender: str = Form("random"), origin: str = Form("english")):
+    return advanced_generator_utils.name_generator(gender, origin)
+
+@app.post("/api/generate/email")
+async def email_generator(domain: str = Form(None), username: str = Form(None)):
+    return advanced_generator_utils.email_generator(domain, username)
+
+@app.post("/api/generate/username")
+async def username_generator(style: str = Form("random")):
+    return advanced_generator_utils.username_generator(style)
+
+@app.post("/api/generate/api-key")
+async def api_key_generator(length: int = Form(32), format_type: str = Form("hex")):
+    return advanced_generator_utils.api_key_generator(length, format_type)
+
+@app.post("/api/generate/random-ip")
+async def random_ip(version: int = Form(4)):
+    return advanced_generator_utils.random_ip(version)
+
+@app.post("/api/generate/random-mac")
+async def random_mac():
+    return advanced_generator_utils.random_mac()
+
+@app.post("/api/generate/user-agent")
+async def random_user_agent():
+    return advanced_generator_utils.random_user_agent()
+
+@app.post("/api/generate/placeholder-image")
+async def placeholder_image(width: int = Form(300), height: int = Form(200), format: str = Form("png")):
+    return advanced_generator_utils.placeholder_image(width, height, format)
+
+@app.post("/api/generate/gradient")
+async def gradient_generator(colors: int = Form(2)):
+    return advanced_generator_utils.gradient_generator(colors)
+
+@app.post("/api/generate/quote")
+async def random_quote():
+    return advanced_generator_utils.random_quote()
+
+# Developer Tools API Routes
+@app.post("/api/developer/code-formatter")
+async def code_formatter(code: str = Form(...), language: str = Form("javascript")):
+    return developer_utils.code_formatter(code, language)
+
+@app.post("/api/developer/code-minifier")
+async def code_minifier(code: str = Form(...), language: str = Form("javascript")):
+    return developer_utils.code_minifier(code, language)
+
+@app.post("/api/developer/regex-builder")
+async def regex_builder(pattern_type: str = Form("email")):
+    return developer_utils.regex_builder(pattern_type)
+
+@app.post("/api/developer/gitignore-generator")
+async def gitignore_generator(project_type: str = Form("python")):
+    return developer_utils.gitignore_generator(project_type)
+
+@app.post("/api/developer/license-generator")
+async def license_generator(license_type: str = Form("mit"), author: str = Form("Your Name"), year: str = Form(None)):
+    return developer_utils.license_generator(license_type, author, year)
+
+@app.post("/api/developer/variable-namer")
+async def variable_namer(description: str = Form(...), naming_convention: str = Form("camelCase")):
+    return developer_utils.variable_namer(description, naming_convention)
+
+# Math Tools API Routes
+@app.post("/api/math/calculator")
+async def basic_calculator(expression: str = Form(...)):
+    return math_utils.basic_calculator(expression)
+
+@app.post("/api/math/scientific")
+async def scientific_calculator(operation: str = Form(...), values: str = Form(...)):
+    try:
+        value_list = [float(x.strip()) for x in values.split(',')]
+        return math_utils.scientific_calculator(operation, value_list)
+    except:
+        return {"error": "Invalid values format"}
+
+@app.post("/api/math/statistics")
+async def statistics_calculator(data: str = Form(...)):
+    try:
+        data_list = [float(x.strip()) for x in data.split(',')]
+        return math_utils.statistics_calculator(data_list)
+    except:
+        return {"error": "Invalid data format"}
+
+@app.post("/api/math/prime-checker")
+async def prime_checker(number: int = Form(...)):
+    return math_utils.prime_checker(number)
+
+@app.post("/api/math/gcd")
+async def gcd_calculator(a: int = Form(...), b: int = Form(...)):
+    return math_utils.gcd_calculator(a, b)
+
+@app.post("/api/math/percentage")
+async def percentage_calculator(operation: str = Form(...), **kwargs):
+    return math_utils.percentage_calculator(operation, **kwargs)
+
+@app.post("/api/math/loan")
+async def loan_calculator(principal: float = Form(...), rate: float = Form(...), time: float = Form(...)):
+    return math_utils.loan_calculator(principal, rate, time)
+
+@app.post("/api/math/unit-circle")
+async def unit_circle(angle: float = Form(...), unit: str = Form("degrees")):
+    return math_utils.unit_circle(angle, unit)
+
+# Network Tools API Routes
+@app.post("/api/network/ip-calculator")
+async def ip_calculator(ip: str = Form(...), operation: str = Form("info")):
+    return network_utils.ip_calculator(ip, operation)
+
+@app.post("/api/network/subnet-calculator")
+async def subnet_calculator(network: str = Form(...)):
+    return network_utils.subnet_calculator(network)
+
+@app.post("/api/network/mac-lookup")
+async def mac_lookup(mac: str = Form(...)):
+    return network_utils.mac_lookup(mac)
+
+@app.post("/api/network/port-checker")
+async def port_checker(host: str = Form(...), port: int = Form(...), timeout: int = Form(5)):
+    return network_utils.port_checker(host, port, timeout)
+
+@app.post("/api/network/dns-propagation")
+async def dns_propagation(domain: str = Form(...), record_type: str = Form("A")):
+    return network_utils.dns_propagation(domain, record_type)
+
+@app.post("/api/network/bandwidth-test")
+async def bandwidth_tester():
+    return network_utils.bandwidth_tester()
+
+@app.post("/api/network/email-validator")
+async def email_validator(email: str = Form(...)):
+    return network_utils.email_validator(email)
+
 # SEO Routes
 @app.get("/sitemap.xml")
 async def sitemap():
@@ -317,6 +671,16 @@ async def terms_page(request: Request):
 async def contact_page(request: Request):
     """Contact page"""
     return templates.TemplateResponse("contact.html", {"request": request})
+
+@app.get("/all-tools", response_class=HTMLResponse)
+async def all_tools_page(request: Request):
+    """All tools page"""
+    return templates.TemplateResponse("all_tools.html", {
+        "request": request,
+        "categories": TOOL_CATEGORIES,
+        "title": "All Tools - Ultimate Utility Tools",
+        "description": "Browse all 300+ free online utility tools across 11 categories"
+    })
 
 @app.get("/health")
 async def health_check():

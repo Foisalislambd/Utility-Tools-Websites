@@ -1,10 +1,10 @@
 # Ultimate Utility Tools 🛠️
 
-A comprehensive collection of **50+ free online utility tools** built with FastAPI and Tailwind CSS. No registration required, privacy-focused, and completely free to use.
+A comprehensive collection of **300+ free online utility tools** built with FastAPI and Tailwind CSS. No registration required, privacy-focused, and completely free to use.
 
 ## 🌟 Features
 
-- **50+ Utility Tools** across 7 categories
+- **300+ Utility Tools** across 11 categories
 - **No Registration Required** - Use tools instantly
 - **Privacy First** - Most processing happens in your browser
 - **Mobile Friendly** - Responsive design for all devices
@@ -14,67 +14,137 @@ A comprehensive collection of **50+ free online utility tools** built with FastA
 
 ## 🔧 Tool Categories
 
-### 📝 Text Tools
+### 📝 Text Tools (30 Tools)
 - Word Counter & Character Counter
 - Text Case Converter (camelCase, snake_case, etc.)
-- Text Diff Checker
+- Text Diff Checker & Advanced Text Statistics
+- Find & Replace with Regex Support
 - Text Formatter & Cleaner
-- Line Sorter & Duplicate Remover
-- Text Encoder/Decoder
+- Language Detection & Sentiment Analysis
+- HTML Stripper & Text Extractor
+- Regex Tester & Pattern Builder
+- Reading Time Calculator
+- Keyword Density Analyzer
 
-### 🔄 Converters
-- Base64 Encoder/Decoder
-- URL Encoder/Decoder
-- JSON Formatter & Validator
-- CSV to JSON Converter
-- XML to JSON Converter
-- Markdown to HTML
-- Unit Converter
-- Color Converter
-- Timestamp Converter
+### 🔄 Converters (36 Tools)
+- Base64, URL, ASCII, Unicode Converters
+- JSON, YAML, XML, CSV Formatters
+- HTML ↔ Text Converters
+- SQL, CSS, JavaScript Formatters
+- Number Base Converter (Binary, Hex, Oct)
+- Roman Numeral Converter
+- Morse Code & Binary Converters
+- Unit Converters (Length, Weight, Temperature)
+- Color Format Converters
+- Timestamp & Timezone Converters
 
-### ⚡ Generators
-- Secure Password Generator
-- UUID Generator (v1, v4)
-- QR Code Generator
-- Lorem Ipsum Generator
-- Fake Data Generator
-- Hash Generator
-- Random Number Generator
-- Color Palette Generator
+### ⚡ Generators (39 Tools)
+- Secure Password & API Key Generators
+- UUID & GUID Generators
+- QR Code & Barcode Generators
+- Lorem Ipsum & Fake Data Generators
+- Random Name, Email, Username Generators
+- Credit Card Number Generator (Testing)
+- Random IP, MAC Address Generators
+- Color Palette & Gradient Generators
+- Placeholder Image Generator
+- Random Quote & Fact Generators
 
-### 🔒 Cryptography Tools
-- MD5, SHA-1, SHA-256, SHA-512 Hash
-- JWT Token Decoder
-- Text Encryption/Decryption
-- RSA Key Generator
-- Certificate Analyzer
-- Checksum Calculator
+### 🔒 Cryptography Tools (30 Tools)
+- MD5, SHA-1, SHA-256, SHA-512 Hashing
+- AES, DES, Blowfish Encryption
+- JWT Token Decoder & Analyzer
+- RSA Key Pair Generator
+- BCrypt, SCrypt, PBKDF2 Hashing
+- HMAC Generator & Digital Signatures
+- SSL Certificate Analyzer
+- Password Strength Checker
+- OTP & TOTP Generators
+- Entropy Calculator
 
-### 🖼️ Image Tools
-- Image Resizer
-- Image Compressor
-- Format Converter
+### 🖼️ Image Tools (36 Tools)
+- Image Resizer & Compressor
+- Format Converter (PNG, JPG, WebP)
 - Image Metadata Extractor
-- Color Picker
-- Image Cropper
+- Color Picker & Analyzer
+- Brightness, Contrast, Saturation Adjusters
+- Image Filters (Blur, Sharpen, Vintage)
+- Image Effects (Sepia, Grayscale, Invert)
+- Watermark & Border Tools
+- Image Cropper & Rotator
+- Histogram & Color Analysis
 
-### 🌐 Web Tools
-- Meta Tag Analyzer
-- SSL Certificate Checker
-- DNS Lookup
-- WHOIS Lookup
-- Page Speed Test
-- URL Shortener
-- Robots.txt Generator
-- Sitemap Generator
+### 🌐 Web Tools (39 Tools)
+- Meta Tag & SEO Analyzer
+- SSL Certificate & Security Checker
+- DNS Lookup & Propagation Checker
+- WHOIS & Domain Information
+- Page Speed & Performance Tester
+- Broken Link & Redirect Checker
+- HTTP Headers Analyzer
+- HTML, CSS, JavaScript Validators
+- Open Graph & Twitter Card Testers
+- Accessibility & Mobile-Friendly Tester
 
-### 📁 File Tools
-- File Hash Calculator
-- File Information Extractor
-- ZIP File Analyzer
+### 📁 File Tools (30 Tools)
+- File Hash Calculator (Multiple Algorithms)
+- File Information & Metadata Extractor
+- ZIP File Analyzer & Extractor
+- File Compressor & Encryptor
 - Duplicate File Finder
-- File Format Converter
+- Batch File Renamer & Organizer
+- MIME Type & Encoding Detector
+- File Permissions Analyzer
+- Disk Usage Analyzer
+- Log File Analyzer
+
+### 💻 Developer Tools (36 Tools)
+- Code Formatter & Minifier (Multiple Languages)
+- Syntax Highlighter & Code Beautifier
+- Regex Builder & Tester
+- SQL Query Builder & Optimizer
+- API Client & Tester
+- JSON Path & XPath Builders
+- .gitignore & License Generators
+- README & Documentation Generators
+- Variable & Function Name Generators
+- Code Complexity Analyzer
+
+### 📊 Data Tools (30 Tools)
+- Data Validator & Cleaner
+- CSV, JSON, XML Analyzers
+- Data Merger & Splitter
+- Statistical Analysis Tools
+- Correlation Calculator
+- Pivot Table Generator
+- Data Profiler & Quality Checker
+- Schema Generator
+- ETL Script Generator
+- Data Migration Helper
+
+### 🧮 Math Tools (33 Tools)
+- Basic & Scientific Calculators
+- Matrix & Equation Solvers
+- Statistics & Probability Calculators
+- Prime Number Checker & Factorization
+- GCD & LCM Calculators
+- Percentage & Interest Calculators
+- Loan & Mortgage Calculators
+- Unit Circle & Trigonometry
+- Number Base Converters
+- Ratio & Proportion Calculators
+
+### 🌐 Network Tools (30 Tools)
+- IP Address & Subnet Calculators
+- CIDR & Network Analyzers
+- Port Scanner & Checker
+- MAC Address Lookup
+- Bandwidth & Latency Testers
+- DNS Propagation Checker
+- Email Validator & Domain Checker
+- SSL/TLS Analyzer
+- Network Security Scanner
+- Firewall & Proxy Testers
 
 ## 🚀 Quick Start
 

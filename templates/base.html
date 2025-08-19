@@ -104,6 +104,7 @@
                 
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="/all-tools" class="text-gray-700 hover:text-blue-600 transition-colors">All Tools</a>
                     <div class="relative group">
                         <button class="text-gray-700 hover:text-blue-600 transition-colors flex items-center">
                             Categories
@@ -111,15 +112,19 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 max-h-96 overflow-y-auto">
                             <div class="py-1">
-                                <a href="/tools/text" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Text Tools</a>
-                                <a href="/tools/converters" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Converters</a>
-                                <a href="/tools/generators" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Generators</a>
-                                <a href="/tools/crypto" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cryptography</a>
-                                <a href="/tools/image" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Image Tools</a>
-                                <a href="/tools/web" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Web Tools</a>
-                                <a href="/tools/file" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">File Tools</a>
+                                <a href="/tools/text" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">📝 Text Tools</a>
+                                <a href="/tools/converters" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">🔄 Converters</a>
+                                <a href="/tools/generators" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">⚡ Generators</a>
+                                <a href="/tools/crypto" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">🔒 Cryptography</a>
+                                <a href="/tools/image" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">🖼️ Image Tools</a>
+                                <a href="/tools/web" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">🌐 Web Tools</a>
+                                <a href="/tools/file" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">📁 File Tools</a>
+                                <a href="/tools/developer" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">💻 Developer Tools</a>
+                                <a href="/tools/data" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">📊 Data Tools</a>
+                                <a href="/tools/math" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">🧮 Math Tools</a>
+                                <a href="/tools/network" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">🌐 Network Tools</a>
                             </div>
                         </div>
                     </div>
@@ -138,17 +143,22 @@
         </div>
         
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t max-h-96 overflow-y-auto">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="/" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Home</a>
-                <a href="/tools/text" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Text Tools</a>
-                <a href="/tools/converters" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Converters</a>
-                <a href="/tools/generators" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Generators</a>
-                <a href="/tools/crypto" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Cryptography</a>
-                <a href="/tools/image" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Image Tools</a>
-                <a href="/tools/web" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Web Tools</a>
-                <a href="/tools/file" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">File Tools</a>
-                <a href="/api/docs" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">API Docs</a>
+                <a href="/" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">🏠 Home</a>
+                <a href="/all-tools" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">🛠️ All Tools</a>
+                <a href="/tools/text" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">📝 Text Tools</a>
+                <a href="/tools/converters" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">🔄 Converters</a>
+                <a href="/tools/generators" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">⚡ Generators</a>
+                <a href="/tools/crypto" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">🔒 Cryptography</a>
+                <a href="/tools/image" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">🖼️ Image Tools</a>
+                <a href="/tools/web" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">🌐 Web Tools</a>
+                <a href="/tools/file" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">📁 File Tools</a>
+                <a href="/tools/developer" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">💻 Developer Tools</a>
+                <a href="/tools/data" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">📊 Data Tools</a>
+                <a href="/tools/math" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">🧮 Math Tools</a>
+                <a href="/tools/network" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">🌐 Network Tools</a>
+                <a href="/api/docs" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">📚 API Docs</a>
             </div>
         </div>
     </nav>

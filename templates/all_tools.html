@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+
+{% block title %}All Tools - Ultimate Utility Tools{% endblock %}
+{% block description %}Browse all 300+ free online utility tools across 11 categories. Text tools, converters, generators, crypto tools, and more.{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">All Tools</h1>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                Browse our complete collection of 300+ free online utility tools
+            </p>
+            <div class="flex items-center justify-center space-x-4">
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">
+                    300+ Tools Available
+                </span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">
+                    11 Categories
+                </span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">
+                    100% Free
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search and Filter -->
+<div class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col md:flex-row gap-4 items-center">
+            <div class="flex-1">
+                <input type="text" id="toolSearch" placeholder="Search tools..." 
+                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            <div class="flex gap-2 flex-wrap">
+                <button onclick="filterCategory('all')" class="filter-btn active px-4 py-2 rounded-lg text-sm font-medium">All</button>
+                {% for category_id, category in categories.items() %}
+                <button onclick="filterCategory('{{ category_id }}')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium">{{ category.name }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tools Grid -->
+<div class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for category_id, category in categories.items() %}
+                {% for tool in category.tools %}
+                <div class="tool-item bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300" 
+                     data-category="{{ category_id }}" data-name="{{ tool.replace('_', ' ').lower() }}">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white text-sm font-bold">
+                                {% if category_id == 'text' %}📝
+                                {% elif category_id == 'converters' %}🔄
+                                {% elif category_id == 'generators' %}⚡
+                                {% elif category_id == 'crypto' %}🔒
+                                {% elif category_id == 'image' %}🖼️
+                                {% elif category_id == 'web' %}🌐
+                                {% elif category_id == 'file' %}📁
+                                {% elif category_id == 'developer' %}💻
+                                {% elif category_id == 'data' %}📊
+                                {% elif category_id == 'math' %}🧮
+                                {% elif category_id == 'network' %}🌐
+                                {% else %}🛠️{% endif %}
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 text-sm">{{ tool.replace('_', ' ').title() }}</h3>
+                            <p class="text-xs text-gray-500">{{ category.name }}</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 text-sm mb-4">
+                        {% if tool == 'word_count' %}Count words, characters, and analyze text statistics
+                        {% elif tool == 'password_generator' %}Generate secure passwords with custom options
+                        {% elif tool == 'base64_converter' %}Encode and decode Base64 strings
+                        {% elif tool == 'qr_generator' %}Create QR codes for URLs and text
+                        {% elif tool == 'json_formatter' %}Format and validate JSON data
+                        {% elif tool == 'uuid_generator' %}Generate unique identifiers
+                        {% elif tool == 'md5_hash' %}Calculate MD5 hashes for data integrity
+                        {% elif tool == 'image_resizer' %}Resize images while maintaining quality
+                        {% elif tool == 'url_encoder' %}Encode and decode URLs safely
+                        {% elif tool == 'text_case_converter' %}Convert text between different cases
+                        {% elif tool == 'credit_card_generator' %}Generate test credit card numbers
+                        {% elif tool == 'name_generator' %}Generate random names for testing
+                        {% elif tool == 'email_generator' %}Create random email addresses
+                        {% elif tool == 'code_formatter' %}Format and beautify source code
+                        {% elif tool == 'regex_builder' %}Build regular expressions easily
+                        {% elif tool == 'basic_calculator' %}Perform mathematical calculations
+                        {% elif tool == 'prime_checker' %}Check if numbers are prime
+                        {% elif tool == 'ip_calculator' %}Calculate IP address information
+                        {% elif tool == 'subnet_calculator' %}Calculate subnet details
+                        {% elif tool == 'html_to_text' %}Convert HTML to plain text
+                        {% elif tool == 'morse_code_converter' %}Convert text to Morse code
+                        {% elif tool == 'binary_converter' %}Convert text to binary
+                        {% elif tool == 'ascii_converter' %}Convert text to ASCII codes
+                        {% elif tool == 'roman_numeral_converter' %}Convert numbers to Roman numerals
+                        {% elif tool == 'gradient_generator' %}Generate CSS gradients
+                        {% elif tool == 'placeholder_image' %}Generate placeholder images
+                        {% elif tool == 'random_quote' %}Get inspirational quotes
+                        {% elif tool == 'gitignore_generator' %}Generate .gitignore files
+                        {% elif tool == 'license_generator' %}Generate software licenses
+                        {% elif tool == 'variable_namer' %}Generate variable names
+                        {% elif tool == 'statistics_calculator' %}Calculate statistical measures
+                        {% elif tool == 'loan_calculator' %}Calculate loan payments
+                        {% elif tool == 'percentage_calculator' %}Calculate percentages
+                        {% elif tool == 'mac_lookup' %}Lookup MAC address vendors
+                        {% elif tool == 'port_checker' %}Check if ports are open
+                        {% elif tool == 'email_validator' %}Validate email addresses
+                        {% else %}{{ tool.replace('_', ' ').title() }} utility tool
+                        {% endif %}
+                    </p>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="text-green-600 text-xs font-medium">✓ Free</span>
+                        <a href="/tool/{{ tool }}" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                            Use Tool →
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        
+        <!-- No results message -->
+        <div id="noResults" class="text-center py-12 hidden">
+            <div class="text-gray-400 mb-4">
+                <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No tools found</h3>
+            <p class="text-gray-600">Try adjusting your search or filter criteria</p>
+        </div>
+    </div>
+</div>
+
+<!-- Tool Count -->
+<div class="bg-blue-600 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-lg">
+            Showing <span id="toolCount">300+</span> tools
+        </p>
+    </div>
+</div>
+
+<style>
+.filter-btn {
+    background-color: #f3f4f6;
+    color: #374151;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    background-color: #e5e7eb;
+}
+
+.filter-btn.active {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.tool-item {
+    transition: all 0.3s ease;
+}
+
+.tool-item:hover {
+    transform: translateY(-2px);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('toolSearch');
+    const toolItems = document.querySelectorAll('.tool-item');
+    const noResults = document.getElementById('noResults');
+    const toolCount = document.getElementById('toolCount');
+    
+    let currentCategory = 'all';
+    
+    // Search functionality
+    searchInput.addEventListener('input', function() {
+        filterTools();
+    });
+    
+    function filterCategory(category) {
+        currentCategory = category;
+        
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        filterTools();
+    }
+    
+    function filterTools() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let visibleCount = 0;
+        
+        toolItems.forEach(item => {
+            const toolName = item.dataset.name;
+            const toolCategory = item.dataset.category;
+            
+            const matchesSearch = toolName.includes(searchTerm);
+            const matchesCategory = currentCategory === 'all' || toolCategory === currentCategory;
+            
+            if (matchesSearch && matchesCategory) {
+                item.style.display = 'block';
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        // Update count
+        toolCount.textContent = visibleCount;
+        
+        // Show/hide no results message
+        if (visibleCount === 0) {
+            noResults.classList.remove('hidden');
+        } else {
+            noResults.classList.add('hidden');
+        }
+    }
+    
+    // Make filterCategory globally available
+    window.filterCategory = filterCategory;
+});
+</script>
+{% endblock %}
