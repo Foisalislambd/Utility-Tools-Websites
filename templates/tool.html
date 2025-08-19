@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Tool Header -->
+<div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">{{ tool_name.replace('_', ' ').title() }}</h1>
+            <p class="text-lg text-blue-100 mb-6">
+                {% if tool_name == 'word_count' %}
+                Count words, characters, lines, and paragraphs in your text. Get detailed statistics including reading time.
+                {% elif tool_name == 'password_generator' %}
+                Generate secure passwords with customizable length and character sets. Perfect for creating strong passwords.
+                {% elif tool_name == 'base64_converter' %}
+                Encode and decode Base64 strings. Essential for data encoding and web development.
+                {% elif tool_name == 'qr_generator' %}
+                Create QR codes for URLs, text, contact information, or any data you need to share.
+                {% elif tool_name == 'json_formatter' %}
+                Format, validate, and beautify JSON data. Essential tool for developers working with APIs.
+                {% elif tool_name == 'uuid_generator' %}
+                Generate unique identifiers (UUIDs) for databases, APIs, and application development.
+                {% elif tool_name == 'md5_hash' %}
+                Calculate MD5 hashes for text verification and data integrity checking.
+                {% elif tool_name == 'sha_hash' %}
+                Generate SHA hashes (SHA-1, SHA-256, SHA-512) for secure data verification.
+                {% elif tool_name == 'image_resizer' %}
+                Resize images while maintaining quality. Perfect for web optimization and social media.
+                {% elif tool_name == 'url_encoder' %}
+                Encode and decode URLs for safe web transmission and API usage.
+                {% elif tool_name == 'text_case_converter' %}
+                Convert text between different cases: uppercase, lowercase, camelCase, snake_case, and more.
+                {% else %}
+                A powerful utility tool to help with your {{ category.replace('_', ' ') }} tasks.
+                {% endif %}
+            </p>
+            <div class="flex items-center justify-center space-x-4">
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">✓ Free to Use</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">🔒 Privacy Safe</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">⚡ Instant Results</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Breadcrumb -->
+<div class="bg-gray-50 border-b">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <nav class="flex" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-4">
+                <li><a href="/" class="text-gray-500 hover:text-gray-700">Home</a></li>
+                <li>
+                    <svg class="flex-shrink-0 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </li>
+                <li><a href="/tools/{{ category }}" class="text-gray-500 hover:text-gray-700">{{ category.replace('_', ' ').title() }}</a></li>
+                <li>
+                    <svg class="flex-shrink-0 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </li>
+                <li><span class="text-gray-900 font-medium">{{ tool_name.replace('_', ' ').title() }}</span></li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<!-- Tool Interface -->
+<div class="py-12 bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Tool Form -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <div id="tool-interface">
+                <!-- Dynamic tool interface will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Result Section -->
+        <div id="result" class="hidden">
+            <!-- Results will be displayed here -->
+        </div>
+        
+        <!-- Tool Information -->
+        <div class="bg-blue-50 rounded-xl p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">About This Tool</h2>
+            <div class="prose prose-blue max-w-none">
+                <p class="text-gray-700 mb-4">
+                    {% if tool_name == 'word_count' %}
+                    This word counter tool provides comprehensive text analysis including word count, character count (with and without spaces), line count, paragraph count, and estimated reading time. Perfect for writers, students, and content creators who need to meet specific word count requirements.
+                    {% elif tool_name == 'password_generator' %}
+                    Our password generator creates cryptographically secure passwords with customizable options. You can specify length, include or exclude symbols, and get strength analysis. Essential for maintaining good security practices across all your accounts.
+                    {% elif tool_name == 'base64_converter' %}
+                    Base64 encoding is commonly used in web development for encoding binary data in ASCII string format. This tool allows you to encode text to Base64 or decode Base64 strings back to readable text.
+                    {% elif tool_name == 'qr_generator' %}
+                    QR codes are versatile tools for sharing information quickly. Generate QR codes for URLs, contact information, WiFi credentials, or any text. The generated codes can be downloaded and used anywhere.
+                    {% elif tool_name == 'json_formatter' %}
+                    JSON formatting and validation tool for developers. Beautify minified JSON, validate syntax, and make your JSON data more readable. Essential for API development and debugging.
+                    {% else %}
+                    This {{ tool_name.replace('_', ' ') }} tool provides powerful functionality for {{ category.replace('_', ' ') }} tasks. Use it to streamline your workflow and save time on common operations.
+                    {% endif %}
+                </p>
+                
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Features:</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>100% free to use with no registration required</li>
+                    <li>Privacy-focused - all processing happens in your browser</li>
+                    <li>Mobile-friendly responsive design</li>
+                    <li>Instant results with copy-to-clipboard functionality</li>
+                    <li>No file size limits or usage restrictions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    loadToolInterface('{{ tool_name }}');
+});
+
+function loadToolInterface(toolName) {
+    const interface = document.getElementById('tool-interface');
+    const resultDiv = document.getElementById('result');
+    
+    // Show result section
+    resultDiv.classList.remove('hidden');
+    
+    switch(toolName) {
+        case 'word_count':
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Word Counter</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/text/word-count');">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Enter your text:</label>
+                        <textarea name="text" rows="8" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Paste your text here to get word count, character count, and reading time..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Count Words
+                    </button>
+                </form>
+            `;
+            break;
+            
+        case 'password_generator':
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Password Generator</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/generate/password');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Password Length:</label>
+                            <input type="number" name="length" value="12" min="4" max="128" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" name="include_symbols" id="include_symbols" checked class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                            <label for="include_symbols" class="ml-2 text-sm text-gray-700">Include symbols (!@#$%^&*)</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Generate Password
+                    </button>
+                </form>
+            `;
+            break;
+            
+        case 'base64_converter':
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Base64 Converter</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/convert/base64');">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Enter text:</label>
+                        <textarea name="text" rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter text to encode or Base64 string to decode..."></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Action:</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="action" value="encode" checked class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-700">Encode</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="action" value="decode" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-700">Decode</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Convert
+                    </button>
+                </form>
+            `;
+            break;
+            
+        case 'qr_generator':
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">QR Code Generator</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/generate/qr');">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Enter text or URL:</label>
+                        <textarea name="text" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter URL, text, or any data to generate QR code..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Generate QR Code
+                    </button>
+                </form>
+            `;
+            break;
+            
+        case 'json_formatter':
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">JSON Formatter</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/convert/json');">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Enter JSON:</label>
+                        <textarea name="text" rows="8" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono" placeholder='{"example": "Enter your JSON here to format and validate it..."}'></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Format JSON
+                    </button>
+                </form>
+            `;
+            break;
+            
+        case 'text_case_converter':
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Text Case Converter</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/text/case-convert');">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Enter text:</label>
+                        <textarea name="text" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter text to convert case..."></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Convert to:</label>
+                        <select name="case_type" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="all">All Cases</option>
+                            <option value="upper">UPPERCASE</option>
+                            <option value="lower">lowercase</option>
+                            <option value="title">Title Case</option>
+                            <option value="sentence">Sentence case</option>
+                            <option value="camel">camelCase</option>
+                            <option value="pascal">PascalCase</option>
+                            <option value="snake">snake_case</option>
+                            <option value="kebab">kebab-case</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Convert Case
+                    </button>
+                </form>
+            `;
+            break;
+            
+        case 'uuid_generator':
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">UUID Generator</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/generate/uuid');">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">UUID Version:</label>
+                        <select name="version" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="4">Version 4 (Random)</option>
+                            <option value="1">Version 1 (Time-based)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Generate UUID
+                    </button>
+                </form>
+            `;
+            break;
+            
+        case 'md5_hash':
+        case 'sha_hash':
+            const algorithms = tool_name === 'md5_hash' ? 
+                '<option value="md5">MD5</option>' :
+                '<option value="sha1">SHA-1</option><option value="sha256">SHA-256</option><option value="sha512">SHA-512</option>';
+            
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">${tool_name.replace('_', ' ').toUpperCase()} Generator</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/crypto/hash');">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Enter text:</label>
+                        <textarea name="text" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter text to hash..."></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Algorithm:</label>
+                        <select name="algorithm" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            ${algorithms}
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Generate Hash
+                    </button>
+                </form>
+            `;
+            break;
+            
+        case 'url_encoder':
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">URL Encoder/Decoder</h2>
+                <form id="toolForm" onsubmit="event.preventDefault(); submitForm('toolForm', '/api/convert/url');">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Enter URL or text:</label>
+                        <textarea name="text" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter URL or text to encode/decode..."></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Action:</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="action" value="encode" checked class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-700">Encode</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="action" value="decode" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-700">Decode</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Convert
+                    </button>
+                </form>
+            `;
+            break;
+            
+        default:
+            interface.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">${toolName.replace('_', ' ').title()}</h2>
+                <div class="text-center py-12">
+                    <div class="text-gray-400 mb-4">
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Tool Coming Soon</h3>
+                    <p class="text-gray-600">This tool is currently under development. Check back soon!</p>
+                </div>
+            `;
+    }
+}
+</script>
+{% endblock %}
